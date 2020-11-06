@@ -25,10 +25,9 @@ yarn android
 yarn ios
 ```
 
-
 ## 모듈 임포트 방법
 
-상대주소를 사용하지 않기 위해서 `src`를 루트로 설정했기때문에 아래 예시의 after 부분처럼 절대경로로 모듈을 임포트할 수 있습니다.
+상대주소를 사용하지 않기 위해서 `src`를 루트로 설정했기때문에 아래 예시의 **after** 부분처럼 절대경로로 모듈을 임포트할 수 있습니다.
 
 ```js
 // before
@@ -67,3 +66,4 @@ yarn lint:fix
 ## Graphql client for remote data (Apollo)
 
 - 외부에 요청하는 데이터 처리
+- apollo 클라이언트에 들어가는 graphql 서버는 prisma cloud에서 제공하는 [데모서버](https://us1.prisma.sh/yangwook-jeong-1f91f5/demo/dev)를 사용 중
