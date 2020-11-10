@@ -5,23 +5,23 @@
 ```sh
 yarn
 
-// developing android
+# developing android
 open -a /Applications/Android\ Studio.app path/to/firecop-app/android
 
-// developing ios
+# developing ios
 npx pod-install
 ```
 
 ## 실행
 
 ```sh
-// running react-native pacakager before executing android/ios
+# running react-native pacakager before executing android/ios
 yarn start
 
-// running android
+# running android
 yarn android
 
-// running ios
+# running ios
 yarn ios
 ```
 
@@ -67,3 +67,12 @@ yarn lint:fix
 
 - 외부에 요청하는 데이터 처리
 - apollo 클라이언트에 들어가는 graphql 서버는 prisma cloud에서 제공하는 [데모서버](https://us1.prisma.sh/yangwook-jeong-1f91f5/demo/dev)를 사용 중
+
+## Component
+
+- hooks, states, handlers를 region으로 묶어 나눔
+- 주석처리 된 region에 커서를 올리고 `cmd + alt + [`로 접었다가 `cmd + alt + ]`로 펼칠 수 있어 가독성을 올리는데 도움이 됨
+
+## Debugging
+
+- 시뮬레이터(`cmd + d`)나 에뮬레이터(`cmd + m`)에서 debugger console을 켜서 `f12`로 크롬 dev tools를 열면 깔끔한 로그를 확인할 수 있다.
