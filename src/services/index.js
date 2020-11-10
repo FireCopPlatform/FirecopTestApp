@@ -1,5 +1,5 @@
 import {ApolloClient, ApolloLink, HttpLink, InMemoryCache} from '@apollo/client'
-import {AsyncStorage} from 'react-native'
+import {AsyncStorage} from '@react-native-community/async-storage'
 import {WebSocketLink} from 'apollo-link-ws'
 import {getMainDefinition} from 'apollo-utilities'
 import {onError} from 'apollo-link-error'

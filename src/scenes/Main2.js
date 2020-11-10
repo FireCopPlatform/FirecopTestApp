@@ -1,17 +1,21 @@
 import React from 'react'
-import {Button, View, Text} from 'react-native'
+import {Button, View} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 
 const Main2 = () => {
+	// #region hooks
 	const navigation = useNavigation()
+	// #endregion hooks
+
+	// #region states
+	// #endregion states
+
+	// #region handlers
+	// #endregion handlers
 
 	return (
 		<View>
-			<Text>Main2 Screen</Text>
-			<Button
-				title="go to main screen"
-				onPress={() => navigation.navigate('Main')}
-			/>
+			<Button title="main screen" onPress={() => navigation.navigate('Main')} />
 		</View>
 	)
 }

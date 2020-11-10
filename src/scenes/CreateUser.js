@@ -1,39 +1,42 @@
 import React, {useState, useCallback} from 'react'
-import {Alert, Button, View, Text, TextInput} from 'react-native'
+import {Alert, Button, View, TextInput} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
-import {useSetRecoilState} from 'recoil'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import {useMutation} from '@apollo/react-hooks'
 
-import {GET_USER} from 'src/services/users'
-import {userTokenState} from 'src/states'
+import {CREATE_USER} from 'src/services/users'
 
-const Sub = () => {
+const CreateUser = () => {
+	// #region hooks
 	const navigation = useNavigation()
-	const setUserToken = useSetRecoilState(userTokenState)
+	const [createUser] = useMutation(CREATE_USER)
+	// #endregion hooks
 
+	// #region states
 	const [email, setEmail] = useState('')
+	const [name, setName] = useState('')
 	const [password, setPassword] = useState('')
+	// #endregion states
 
-	const [login] = useMutation(GET_USER)
-
+	// #region handlers
 	const handleEmailChange = (value) => {
 		setEmail(value.trim())
+	}
+	const handleNameChange = (value) => {
+		setName(value.trim())
 	}
 	const handlePasswordChange = (value) => {
 		setPassword(value.trim())
 	}
-	const handleLoginPress = useCallback(async () => {
+	const handleCreateUserPress = useCallback(async () => {
 		try {
-			const data = await login({variables: {email, password}})
-			if (data) {
-				setUserToken(data.data.login.token)
-			}
+			await createUser({variables: {email, name, password}})
 		} catch (e) {
 			console.log(e)
-			Alert.alert('로그인 실패', e.message, [{text: '확인'}])
+			Alert.alert('Failed fetching data', e.message, [{text: 'OK'}])
 		}
-	}, [email, password])
+	}, [email, name, password])
+	// #endregion handlers
 
 	return (
 		<SafeAreaView>
@@ -48,6 +51,14 @@ const Sub = () => {
 					returnKeyType="next"
 				/>
 				<TextInput
+					placeholder="name"
+					textContentType="username"
+					value={name}
+					onChangeText={handleNameChange}
+					autoCapitalize="none"
+					returnKeyType="next"
+				/>
+				<TextInput
 					placeholder="password"
 					secureTextEntry
 					value={password}
@@ -55,15 +66,14 @@ const Sub = () => {
 					autoCapitalize="none"
 					returnKeyType="send"
 				/>
-				<Button title="login btn" onPress={handleLoginPress} />
-				<Text>Sub Screen</Text>
+				<Button title="create user button" onPress={handleCreateUserPress} />
 				<Button
-					title="go to signup screen"
-					onPress={() => navigation.navigate('Sub2')}
+					title="login screen"
+					onPress={() => navigation.navigate('Login')}
 				/>
 			</View>
 		</SafeAreaView>
 	)
 }
 
-export default Sub
+export default CreateUser

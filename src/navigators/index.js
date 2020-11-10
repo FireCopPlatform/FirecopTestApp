@@ -7,8 +7,10 @@ import {useRecoilValue} from 'recoil'
 
 import {userTokenState} from 'src/states'
 
-import Sub from 'src/scenes/Sub'
-import Sub2 from 'src/scenes/Sub2'
+import Login from 'src/scenes/Login'
+import Signup from 'src/scenes/Signup'
+import GetUser from 'src/scenes/GetUser'
+import CreateUser from 'src/scenes/CreateUser'
 import Main from 'src/scenes/Main'
 import Main2 from 'src/scenes/Main2'
 
@@ -17,7 +19,6 @@ const Stack = createStackNavigator()
 const AppContainer = () => {
 	const userToken = useRecoilValue(userTokenState)
 
-	// TODO: `headerMode`, `initialRouteName` 추가
 	return (
 		<SafeAreaProvider>
 			<NavigationContainer>
@@ -29,8 +30,10 @@ const AppContainer = () => {
 						</>
 					) : (
 						<>
-							<Stack.Screen name="Sub" component={Sub} />
-							<Stack.Screen name="Sub2" component={Sub2} />
+							<Stack.Screen name="Login" component={Login} />
+							<Stack.Screen name="Signup" component={Signup} />
+							<Stack.Screen name="GetUser" component={GetUser} />
+							<Stack.Screen name="CreateUser" component={CreateUser} />
 						</>
 					)}
 				</Stack.Navigator>
