@@ -76,3 +76,9 @@ yarn lint:fix
 ## Debugging
 
 - 시뮬레이터(`cmd + d`)나 에뮬레이터(`cmd + m`)에서 debugger console을 켜서 `f12`로 크롬 dev tools를 열면 깔끔한 로그를 확인할 수 있다.
+
+## Tip
+
+optional chaining이 eslint에서 동작하지 않아서 아래와 같은 에러가 발생하니, 예전에 사용하던 방식인 `foo && foo.map()`같은 코드로 작성할 것
+
+> Parsing error: Unexpected token .
